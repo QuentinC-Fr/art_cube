@@ -11,10 +11,8 @@ const CityForm = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <label>
-        Ville que vous voudriez visiter:
-        <input type="text" {...bindCity} />
-      </label>
+      <label>Ville que vous voudriez visiter:</label>
+      <input type="text" {...bindCity} />
       <input type="submit" value="Submit" />
     </form>
   );
