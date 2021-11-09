@@ -36,3 +36,32 @@ code {
     transform: rotate(360deg);
   }
 }
+
+.nav-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  width: 60%;
+  height: 100px;
+
+  a {
+    text-decoration: none;
+  }
+  a:link,
+  a:visited {
+    border-radius: 10px;
+    background-color: #2d72cc;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+  }
+  a:hover,
+  a:active {
+    background-color: darken(#2d72cc, 20%);
+    color: white;
+  }
+}

@@ -1,15 +1,15 @@
+import { Link } from "react-router-dom";
+import Entry from "../components/Entry";
+import "../styles/global.scss";
+
 const Presentation = () => {
   return (
     <div className="App">
       <h2>Présentation</h2>
-      <a
-        className="App-link"
-        href="https://reactjs.org"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Learn React
-      </a>
+      <div className={"nav-container"}>
+        <Entry />
+        <Link to={"/art_display"}>SEE THE ART</Link>
+      </div>
     </div>
   );
 };

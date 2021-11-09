@@ -1,3 +1,4 @@
+import React from "react";
 import ArtContainer from "../components/art/ArtContainer";
 
 const ArtDisplay = () => {

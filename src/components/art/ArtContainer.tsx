@@ -1,5 +1,6 @@
 import { OrbitControls, Text } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
+import { shallowEqual, useSelector } from "react-redux";
 import { Euler, Vector3 } from "three";
 
 const Wall = ({
@@ -196,6 +197,12 @@ function Cube() {
 }
 
 const ArtContainer = () => {
+  const cities: readonly ICity[] = useSelector(
+    (state: CityState) => state.cities,
+    shallowEqual
+  );
+  console.log(cities);
+
   return (
     <Canvas
       camera={{ position: [0, 0, 300], far: 2000 }}
