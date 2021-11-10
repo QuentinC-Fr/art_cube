@@ -5,84 +5,6 @@ import { shallowEqual, useSelector } from "react-redux";
 import { Euler, Vector3 } from "three";
 import { textRepartition } from "../../helpers/helperTextRepartition";
 
-const Wall = ({
-  height = 200,
-  width = 200,
-  position,
-  rotation,
-}: {
-  height: number;
-  width: number;
-  position: Vector3;
-  rotation: Euler;
-}) => {
-  const inverse_rotation =
-    rotation.x !== 0
-      ? new Euler(rotation.x + Math.PI, rotation.y, rotation.z)
-      : rotation.z !== 0
-      ? new Euler(rotation.x, rotation.y, rotation.z + Math.PI)
-      : new Euler(rotation.x, rotation.y + Math.PI, rotation.z);
-  return (
-    <mesh position={position}>
-      <mesh rotation={rotation} position={[0, 0, 0]}>
-        <planeBufferGeometry attach="geometry" args={[height, width]} />
-        <meshPhongMaterial attach="material" color="black" />
-      </mesh>
-      <mesh rotation={inverse_rotation} position={[0, 0, 0]}>
-        <planeBufferGeometry attach="geometry" args={[height, width]} />
-        <meshPhongMaterial attach="material" color="black" />
-      </mesh>
-    </mesh>
-  );
-};
-
-const Box = ({
-  height = 200,
-  width = 200,
-  position = new Vector3(0, 0, 0),
-  rotation = new Euler(0, 0, 0),
-}) => {
-  return (
-    <mesh position={position} rotation={rotation}>
-      {/*  Right*/}
-      <Wall
-        height={height}
-        width={width}
-        position={new Vector3(height + 0.1, 0, 0)}
-        rotation={new Euler(0, Math.PI + Math.PI / 2, 0)}
-      />
-      {/* Left */}
-      <Wall
-        height={height}
-        width={width}
-        position={new Vector3(-0.1, 0, 0)}
-        rotation={new Euler(0, Math.PI / 2, 0)}
-      />
-      {/* Back */}
-      <Wall
-        height={height}
-        width={width}
-        position={new Vector3(height / 2 + 0.1, 0, -(height / 2 + 0.1))}
-        rotation={new Euler(0, 0, 0)}
-      />
-      {/* Bot */}
-      <Wall
-        height={height}
-        width={width}
-        position={new Vector3(height / 2, -(height / 2 + 0.1), 0)}
-        rotation={new Euler(Math.PI + Math.PI / 2, 0, 0)}
-      />
-      {/* Top */}
-      <Wall
-        height={height}
-        width={width}
-        position={new Vector3(height / 2, height / 2 + 0.1, 0)}
-        rotation={new Euler(Math.PI / 2, 0, 0)}
-      />
-    </mesh>
-  );
-};
-
 interface CustomTextProps {
   maxWidth?: number;
   maxHeight?: number;
@@ -96,7 +18,7 @@ const CustomText: React.FunctionComponent<CustomTextProps> = ({
   maxWidth = 180,
   maxHeight = 200,
   children,
-  color = "#fff",
+  color = "#000",
   position = new Vector3(0, 0, 0),
   rotation = new Euler(0, 0, 0),
 }) => {
@@ -117,6 +39,8 @@ const CustomText: React.FunctionComponent<CustomTextProps> = ({
         letterSpacing={letterSpacing}
         textAlign={textAlign}
         fillOpacity={1}
+        strokeWidth={0.3}
+        strokeColor={"#fff"}
         font="https://fonts.gstatic.com/s/raleway/v14/1Ptrg8zYS_SKggPNwK4vaqI.woff"
       >
         {children}
@@ -229,7 +153,7 @@ const Cube: React.FunctionComponent<CustomCubeProps> = ({ cities = [] }) => {
     .map((city) => city.cityName);
   return (
     <mesh position={[-100, 0, 0]}>
-      <Box height={200} width={200} />
+      {/* <Box height={200} width={200} /> */}
       <InnerTextBox text={otherCities} />
       <OuterTextBox text={myCities} />
     </mesh>

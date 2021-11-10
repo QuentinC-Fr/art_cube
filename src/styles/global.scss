@@ -38,12 +38,13 @@ code {
 }
 
 .nav-container {
+  margin-top: 20px;
+
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
-  width: 60%;
-  height: 100px;
+  width: 100%;
 
   a {
     text-decoration: none;
@@ -64,4 +65,31 @@ code {
     background-color: darken(#2d72cc, 20%);
     color: white;
   }
+}
+
+.presentation-container {
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+.page {
+  width: 50%;
+  height: auto;
+  max-height: 80%;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-container {
+  max-width: 50%;
+}
+
+input {
+  height: 25px;
+  border-radius: 5px;
+  margin: 5px;
+}
+
+label {
+  font-size: x-large;
 }
