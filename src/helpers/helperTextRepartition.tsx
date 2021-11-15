@@ -22,7 +22,7 @@ export const textRepartition = (text: string[], nbSide: number) => {
     console.log(nb_space_arround);
     return " ‎ ‎"
       .repeat(Math.random() * nb_space_arround)
-      .concat(area.join(" ‎  ‎".repeat(nb_space_arround)))
+      .concat(area.join(" ‎ ‎".repeat(nb_space_arround)))
       .concat(" ‎ ‎".repeat(Math.random() * nb_space_arround));
   });
   return returnArray;
